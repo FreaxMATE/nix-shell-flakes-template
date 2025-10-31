@@ -1,5 +1,5 @@
 {
-  description = "Python Template";
+  description = "mkdocs";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -14,15 +14,11 @@
       pkgs = import nixpkgs {
         inherit system;
       };
-
     in pkgs.mkShell {
+      #LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       packages = with pkgs; [
-        python312Packages.python
-        python312Packages.scipy
-        python312Packages.numpy
-        python312Packages.matplotlib
-        python312Packages.pandas
-        entsoe-py
+        gcc
+        gdb
       ];
     };
   };
