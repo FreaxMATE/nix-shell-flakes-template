@@ -1,5 +1,5 @@
 {
-  description = "cpp";
+  description = "nodejs";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
@@ -17,8 +17,7 @@
     in pkgs.mkShell {
       #LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib";
       packages = with pkgs; [
-        gcc
-        gdb
+        nodejs
       ];
     };
   };

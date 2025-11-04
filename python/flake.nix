@@ -15,6 +15,22 @@
         inherit system;
       };
 
+    entsoe-py = pkgs.python312Packages.buildPythonPackage rec {
+      pname = "entsoe-py";
+      version = "0.7.8";
+      src = pkgs.fetchurl {
+        url = "https://files.pythonhosted.org/packages/17/89/e6f18b055a7ffb7c27d046f9a0a0dd60e8bcf62cb97cfe3de91e7cfec1ed/entsoe_py-0.7.8.tar.gz";
+        sha256 = "sha256-efmZH+nylDfqIYw9cJdSyemV/tmKbHb5naR7iAwvoAk=";
+      };
+      propagatedBuildInputs = with pkgs.python312Packages; [
+        pandas
+        requests
+        beautifulsoup4
+        pytz
+      ];
+      doCheck = false;
+    };
+
     in pkgs.mkShell {
       packages = with pkgs; [
         python312Packages.python
